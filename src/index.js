@@ -86,8 +86,12 @@ function ready([chicago, data]) {
                 return "yellow";
             } else if (d.PrimaryType === "CRIMINAL DAMAGE"){
                 return "green";
-            }else {
+            } else if (d.PrimaryType === "ASSAULT") {
                 return "pink";
+            } else if (d.PrimaryType === "OTHER OFFENSE") {
+                return "blue";
+            }else{
+                return "white";
             }
         })
 
