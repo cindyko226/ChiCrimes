@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>ChiChimes</title>
+        <meta charset="utf-8"> 
+        <link rel="stylesheet" href="./css/styles.css">
+        <script src="https://d3js.org/topojson.v1.js"></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/topojson.v2.min.js"></script>
+            
+    </head>
+    
+    <body>
+        <h1>ChiCrimes</h1>
+        <svg width="960" height="600"></svg>
+        <script src="./dist/main.js"></script>
+<!--     
+    <script>
+        var svg = d3.select("svg"),
+            width = +svg.attr("width"),
+            height = +svg.attr("height");
+
+        var scale = 0.70,
+            w = 1400 * scale,
+            h = 900 * scale,
+            data = [],
+            map_portion = 0.55;
+
+        var projection = d3.geoAlbers()
+            .translate([(w * map_portion) / 2, h / 2])
+            .scale(87000)
+            .rotate([87.685, 0])
+            .center([0, 41.833])
+
+        var path = d3.geoPath()
+            .projection(projection);
+
+        var promises = [d3.json("wards.json")];
+        Promise.all(promises).then(ready)
+
+        function ready([chicago]) {
+            var precincts = topojson.feature(chicago, chicago.objects.wards);
+
+            svg.append("g")
+                .attr("class", "precinct")
+                .selectAll("path")
+                .data(precincts.features)
+                .enter()
+                .append("path")
+                .attr("d", path);
+        }
+    </script>  -->
+
+    
+</body>
+
+</html>
+
+    <!-- <script src="data.js"></script> -->
+    <!-- <svg class="chart"></svg> -->
+    
+    <!--test for render-->
+    <!-- <script>
+        const dataset = [12, 31, 22, 17, 25, 18, 29, 14, 9];
+        
+        const w = 500;
+        const h = 200;
+
+        const svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", (d, i) => i * 30)
+            .attr("y", (d, i) => h - 3 * d)
+            .attr("width", 25)
+            .attr("height", (d, i) => d * 3)
+            .attr("fill", "navy")
+            .attr("class", "bar")
+       
+
+        svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text((d) => d)
+            .attr("x", (d, i) => i * 30)
+            .attr("y", (d, i) => h - (d * 3 + 3))
+
+    </script> -->
+
+  
