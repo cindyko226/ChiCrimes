@@ -14,44 +14,17 @@
     <body>
         <h1>ChiCrimes</h1>
         <svg width="960" height="600"></svg>
+        <div id="tooltip">
+            Date : <span id="date" class="info"></span><br/>
+            Location : <span id='location' class="info"></span><br/>
+            Primary Type : <span id="primarytype" class="info"></span><br/>
+            Arrest : <span id="arrest" class="info"></span>
+        </div>
+
+        
+
+
         <script src="./dist/main.js"></script>
-<!--     
-    <script>
-        var svg = d3.select("svg"),
-            width = +svg.attr("width"),
-            height = +svg.attr("height");
-
-        var scale = 0.70,
-            w = 1400 * scale,
-            h = 900 * scale,
-            data = [],
-            map_portion = 0.55;
-
-        var projection = d3.geoAlbers()
-            .translate([(w * map_portion) / 2, h / 2])
-            .scale(87000)
-            .rotate([87.685, 0])
-            .center([0, 41.833])
-
-        var path = d3.geoPath()
-            .projection(projection);
-
-        var promises = [d3.json("wards.json")];
-        Promise.all(promises).then(ready)
-
-        function ready([chicago]) {
-            var precincts = topojson.feature(chicago, chicago.objects.wards);
-
-            svg.append("g")
-                .attr("class", "precinct")
-                .selectAll("path")
-                .data(precincts.features)
-                .enter()
-                .append("path")
-                .attr("d", path);
-        }
-    </script>  -->
-
     
 </body>
 

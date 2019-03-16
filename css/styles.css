@@ -19,6 +19,31 @@ svg{
 
 .dot{
     stroke: rgb(3, 10, 10);
-    color: plum
+   
 }
 
+
+#tooltip {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  padding: 16px;
+  background-color: turquoise;
+  border: 1px solid whitesmoke;
+  width: auto;
+  color: black;
+  opacity: 0.9;
+  position: absolute;
+  display: none;
+}
+
+#primarytype{
+    text-decoration: underline;
+}
+
+.f{
+    color: red;
+}
+
+.t{
+    color: green;
+}
