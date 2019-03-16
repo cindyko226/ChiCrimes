@@ -136,19 +136,19 @@ function ready(_ref) {
     return projection([d.Longitude, d.Latitude])[0];
   }).attr('cy', function (d) {
     return projection([d.Longitude, d.Latitude])[1];
-  }).attr('r', "3.5").style('fill', function (d) {
-    if (d.PrimaryType === "THEFT") {
+  }).attr('r', "3.5").attr("class", "dot").style('fill', function (d) {
+    if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
       return "red";
-    } else if (d.PrimaryType === "BATTERY") {
-      return "purple";
-    } else if (d.PrimaryType === "WEAPONS VIOLATION") {
+    } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
+      return "plum";
+    } else if (d.PrimaryType === "WEAPONS VIOLATION" || d.PrimaryType === "CRIM SEXUAL ASSAULT") {
       return "yellow";
-    } else if (d.PrimaryType === "CRIMINAL DAMAGE") {
-      return "green";
-    } else if (d.PrimaryType === "ASSAULT") {
+    } else if (d.PrimaryType === "BURGLARY" || d.PrimaryType === "ROBBERY") {
+      return "palegreen";
+    } else if (d.PrimaryType === "NARCOTICS") {
       return "pink";
-    } else if (d.PrimaryType === "OTHER OFFENSE") {
-      return "blue";
+    } else if (d.PrimaryType === "OTHER OFFENSE" || d.PrimaryType === "OFFENSE INVOLVING CHILDREN") {
+      return "powderblue";
     } else {
       return "white";
     }
