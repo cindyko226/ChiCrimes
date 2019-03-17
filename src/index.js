@@ -203,9 +203,44 @@ function ready([chicago, data]) {
         .style('fill', 'white')
         .style('font-family', 'Arial');
         
+        
 
 
 
+
+    var colorRange = ["#9cdbe5", "#e0e0e0", "#59ddf2"];
+    var color = d3.scaleLinear().range(colorRange).domain([-1, 0, 1]);
+
+    var radialGradient = svg.append("defs")
+        .append("radialGradient")
+        .attr("id", "radial-gradient");
+
+    radialGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", color(-1));
+
+    radialGradient.append("stop")
+        .attr("offset", "50%")
+        .attr("stop-color", color(0));
+
+    radialGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", color(1));
+
+    svg.append("circle")
+        .attr("cx", width * 0.65)
+        .attr("cy", height * 0.55)
+        .attr("r", height * 0.03)
+        .style("opacity", 0.7)
+        .style("fill", "url(#radial-gradient)")
+        .attr('class', 'pulse')
+
+
+
+
+
+      
+       
     }
     
  
