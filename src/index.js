@@ -6,11 +6,13 @@ var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
+svg.attr('viewBox', '250 100 600 600');
+
 var scale = 0.70,
     w = 1400 * scale,
-    h = 900 * scale,
+    h = 1200 * scale,
     data = [],
-    map_portion = 0.55;
+    map_portion = 0.65;
 
 var projection = d3.geoAlbers()
     .translate([(w * map_portion) / 2, h / 2])
@@ -42,7 +44,7 @@ var promises = [
 var g = svg.append('g');
 
 
-var colorset = ["red", "navy", "rgb(255, 230, 61)", "plum", "green","pink",'white'];
+var colorset = ["red", "blue", "yellow", "plum", "green","pink",'white', ''];
 var textset = [
   "THEFT / MOTOR VEHICLE THEFT",
   "BATTERY / ASSAULT",
@@ -50,7 +52,8 @@ var textset = [
   "BURGLARY / ROBBERY",
   "NARCOTICS",
   "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN",
-  'OTHER'
+  'HOMICIDE',
+  "SHOW ALL"
 ];
 
 Promise.all(promises).then(ready);
@@ -80,16 +83,15 @@ function ready([chicago, data]) {
             return projection([d.Longitude, d.Latitude])[1];
         })
         .attr('r', "3")
-        .attr("class", 'dot')
         .style('fill', function(d){
             if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
-              return "red";
+                return "red";
             } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
-              return "plum";
+                return "plum";
             } else if (d.PrimaryType === "WEAPONS VIOLATION" || d.PrimaryType === "CRIM SEXUAL ASSAULT") {
-                return "rgb(255, 230, 61)";
+                return "yellow";
             } else if (d.PrimaryType === "BURGLARY" || d.PrimaryType === "ROBBERY") {
-                return "navy";
+                return "blue";
             } else if (d.PrimaryType === "NARCOTICS") {
                 return "pink";
             } else if (d.PrimaryType === "OTHER OFFENSE" || d.PrimaryType === "OFFENSE INVOLVING CHILDREN") {
@@ -99,7 +101,23 @@ function ready([chicago, data]) {
             }
         })
         .style('stroke', 'none')
-        .attr("class", 'pulse')
+        .attr('class', function(d){
+            if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
+                return "red";
+            } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
+                return "plum";
+            } else if (d.PrimaryType === "WEAPONS VIOLATION" || d.PrimaryType === "CRIM SEXUAL ASSAULT") {
+                return "yellow";
+            } else if (d.PrimaryType === "BURGLARY" || d.PrimaryType === "ROBBERY") {
+                return "blue";
+            } else if (d.PrimaryType === "NARCOTICS") {
+                return "pink";
+            } else if (d.PrimaryType === "OTHER OFFENSE" || d.PrimaryType === "OFFENSE INVOLVING CHILDREN") {
+                return "green";
+            } else {
+                return "white";
+            }
+        })
         .on('mouseover', function(d){
             d3.selectAll('circle').style('opacity', 0.7);
             d3.select(this)
@@ -126,6 +144,8 @@ function ready([chicago, data]) {
                 .style('display', 'none');
         });
         
+    
+
         g.selectAll("rect")
           .data(colorset)
           .enter()
@@ -133,14 +153,42 @@ function ready([chicago, data]) {
           .attr("height", 20)
           .attr("x", 500)
           .attr("y", function(d, i) {
-            return 30 + (i * 30);
+            return 130 + (i * 30);
           })
           .attr("width", 20)
           .attr("fill", function(d) {
             return d;
           })
           .attr("class", "colorbar")
-          .style('stroke', 'none');
+          .style('stroke', 'none')
+          .on('click', function(d){
+              if(d === 'red'){
+                  d3.selectAll('circle').style('display','none');
+                  d3.selectAll('.red').style('display', 'block');
+              }else if( d === 'blue'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.blue').style('display', 'block');
+              } else if (d === 'yellow'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.yellow').style('display', 'block');
+              }else if (d === 'plum'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.plum').style('display', 'block');
+              }else if (d === 'green'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.green').style('display', 'block');
+              }else if ( d === 'pink'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.pink').style('display', 'block');
+              }else if (d === 'white'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.white').style('display', 'block');
+              }else{
+                  d3.selectAll('circle').style('display', 'block');
+              }
+          });
+
+        
        
         g.selectAll("text")
         .data(textset)
@@ -149,11 +197,11 @@ function ready([chicago, data]) {
         .text((d) => d)
         .attr("x", 550)
         .attr("y", function(d, i){
-            return 45 + (i * 30)
+            return 145 + (i * 30)
         })
         .style('stroke', 'white')
         .style('fill', 'white')
-        .style('font-family', 'Arial')
+        .style('font-family', 'Arial');
         
 
 
@@ -161,5 +209,5 @@ function ready([chicago, data]) {
     }
     
  
-    
+    // .attr("class", 'pulse')
                          
