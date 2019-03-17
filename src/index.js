@@ -1,13 +1,4 @@
 
-// import * as d3 from "d3";
-
-// d3.csv("data.csv", function (data) {
-//     // console.log('here');
-//     data.forEach(function (d) {
-//         console.log(d);
-//     });
-//     // console.log(data);
-// });
 
 
 
@@ -88,7 +79,7 @@ function ready([chicago, data]) {
         .attr('cy', function(d){
             return projection([d.Longitude, d.Latitude])[1];
         })
-        .attr('r', "3.5")
+        .attr('r', "3")
         .attr("class", 'dot')
         .style('fill', function(d){
             if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
@@ -107,6 +98,7 @@ function ready([chicago, data]) {
                 return "white";
             }
         })
+        .attr("class", 'pulse')
         .on('mouseover', function(d){
             d3.selectAll('circle').style('opacity', 0.7);
             d3.select(this)
@@ -128,7 +120,7 @@ function ready([chicago, data]) {
         })
         .on('mouseout', function (d) {
             d3.selectAll('circle').style('opacity', 1)
-            d3.select(this).attr("r", 3.5);
+            d3.select(this).attr("r", 3);
             d3.select('#tooltip')
                 .style('display', 'none');
         });
@@ -160,22 +152,13 @@ function ready([chicago, data]) {
         })
         .style('stroke', 'white')
         .style('fill', 'white')
-        .style('font-family', 'Arial');
-  
-
-
+        .style('font-family', 'Arial')
         
-            
 
-}
-                                
-                          
-                                
-// d3.csv("data.csv", function (data) {
-//     // console.log('here');
-//     data.forEach(function (d) {
-//         console.log(d);
-//     });
-//     // console.log(data);
-// });
-                                
+
+
+    }
+    
+ 
+    
+                         

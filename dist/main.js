@@ -101,14 +101,6 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import * as d3 from "d3";
-// d3.csv("data.csv", function (data) {
-//     // console.log('here');
-//     data.forEach(function (d) {
-//         console.log(d);
-//     });
-//     // console.log(data);
-// });
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -145,7 +137,7 @@ function ready(_ref) {
     return projection([d.Longitude, d.Latitude])[0];
   }).attr('cy', function (d) {
     return projection([d.Longitude, d.Latitude])[1];
-  }).attr('r', "3.5").attr("class", 'dot').style('fill', function (d) {
+  }).attr('r', "3").attr("class", 'dot').style('fill', function (d) {
     if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
       return "salmon";
     } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
@@ -161,7 +153,7 @@ function ready(_ref) {
     } else {
       return "white";
     }
-  }).on('mouseover', function (d) {
+  }).attr("class", 'pulse').on('mouseover', function (d) {
     d3.selectAll('circle').style('opacity', 0.7);
     d3.select(this).style("opacity", 1).attr("r", 20);
     d3.select("#date").text(d.Date);
@@ -171,7 +163,7 @@ function ready(_ref) {
     d3.select('#tooltip').style('left', d3.event.pageX + 20 + 'px').style('top', d3.event.pageY - 80 + 'px').style('display', 'block');
   }).on('mouseout', function (d) {
     d3.selectAll('circle').style('opacity', 1);
-    d3.select(this).attr("r", 3.5);
+    d3.select(this).attr("r", 3);
     d3.select('#tooltip').style('display', 'none');
   });
   g.selectAll("rect").data(colorset).enter().append("rect").attr("height", 20).attr("x", 500).attr("y", function (d, i) {
@@ -184,13 +176,7 @@ function ready(_ref) {
   }).attr("x", 550).attr("y", function (d, i) {
     return 45 + i * 30;
   }).style('stroke', 'white').style('fill', 'white').style('font-family', 'Arial');
-} // d3.csv("data.csv", function (data) {
-//     // console.log('here');
-//     data.forEach(function (d) {
-//         console.log(d);
-//     });
-//     // console.log(data);
-// });
+}
 
 /***/ })
 
