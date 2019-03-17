@@ -42,7 +42,7 @@ var promises = [
 var g = svg.append('g');
 
 
-var colorset = ["salmon", "palegreen", "rgb(255, 230, 61)", "plum", "powderblue","pink",'white'];
+var colorset = ["red", "navy", "rgb(255, 230, 61)", "plum", "green","pink",'white'];
 var textset = [
   "THEFT / MOTOR VEHICLE THEFT",
   "BATTERY / ASSAULT",
@@ -83,21 +83,22 @@ function ready([chicago, data]) {
         .attr("class", 'dot')
         .style('fill', function(d){
             if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
-              return "salmon";
+              return "red";
             } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
               return "plum";
             } else if (d.PrimaryType === "WEAPONS VIOLATION" || d.PrimaryType === "CRIM SEXUAL ASSAULT") {
                 return "rgb(255, 230, 61)";
             } else if (d.PrimaryType === "BURGLARY" || d.PrimaryType === "ROBBERY") {
-                return "palegreen";
+                return "navy";
             } else if (d.PrimaryType === "NARCOTICS") {
                 return "pink";
             } else if (d.PrimaryType === "OTHER OFFENSE" || d.PrimaryType === "OFFENSE INVOLVING CHILDREN") {
-                return "powderblue";
+                return "green";
             } else {
                 return "white";
             }
         })
+        .style('stroke', 'none')
         .attr("class", 'pulse')
         .on('mouseover', function(d){
             d3.selectAll('circle').style('opacity', 0.7);

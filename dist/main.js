@@ -122,7 +122,7 @@ var projection = d3.geoAlbers().translate([w * map_portion / 2, h / 2]).scale(82
 var path = d3.geoPath().projection(projection);
 var promises = [d3.json("wards.json"), d3.csv('data.csv')];
 var g = svg.append('g');
-var colorset = ["salmon", "palegreen", "rgb(255, 230, 61)", "plum", "powderblue", "pink", 'white'];
+var colorset = ["red", "navy", "rgb(255, 230, 61)", "plum", "green", "pink", 'white'];
 var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", 'OTHER'];
 Promise.all(promises).then(ready);
 
@@ -139,21 +139,21 @@ function ready(_ref) {
     return projection([d.Longitude, d.Latitude])[1];
   }).attr('r', "3").attr("class", 'dot').style('fill', function (d) {
     if (d.PrimaryType === "THEFT" || d.PrimaryType === "MOTOR VEHICLE THEFT") {
-      return "salmon";
+      return "red";
     } else if (d.PrimaryType === "BATTERY" || d.PrimaryType === "ASSAULT") {
       return "plum";
     } else if (d.PrimaryType === "WEAPONS VIOLATION" || d.PrimaryType === "CRIM SEXUAL ASSAULT") {
       return "rgb(255, 230, 61)";
     } else if (d.PrimaryType === "BURGLARY" || d.PrimaryType === "ROBBERY") {
-      return "palegreen";
+      return "navy";
     } else if (d.PrimaryType === "NARCOTICS") {
       return "pink";
     } else if (d.PrimaryType === "OTHER OFFENSE" || d.PrimaryType === "OFFENSE INVOLVING CHILDREN") {
-      return "powderblue";
+      return "green";
     } else {
       return "white";
     }
-  }).attr("class", 'pulse').on('mouseover', function (d) {
+  }).style('stroke', 'none').attr("class", 'pulse').on('mouseover', function (d) {
     d3.selectAll('circle').style('opacity', 0.7);
     d3.select(this).style("opacity", 1).attr("r", 20);
     d3.select("#date").text(d.Date);

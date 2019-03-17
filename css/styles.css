@@ -13,7 +13,7 @@ h1{
 }
 
 svg{
-    background: black;
+    background: rgb(186, 223, 228);
 }
 
 
@@ -60,7 +60,7 @@ svg{
 .pulse
 {
     /* Giving Animation Function */
-    -webkit-animation: pulse 5s infinite;
+    -webkit-animation: pulse 3s infinite ;
 }
 
 .blur {
