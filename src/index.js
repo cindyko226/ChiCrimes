@@ -52,8 +52,9 @@ var textset = [
   "BURGLARY / ROBBERY",
   "NARCOTICS",
   "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN",
-  'HOMICIDE',
-  "SHOW ALL"
+  "HOMICIDE",
+  "SHOW ALL",
+  "CLICK COLOR SQUARE TO FILTER CRIMES"
 ];
 
 Promise.all(promises).then(ready);
@@ -199,8 +200,20 @@ function ready([chicago, data]) {
         .attr("y", function(d, i){
             return 145 + (i * 30)
         })
-        .style('stroke', 'white')
-        .style('fill', 'white')
+        .style('stroke', function (d) {
+            if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
+              return "red";
+            } else {
+              return "white";
+            }
+            })
+        .style('fill', function(d) {
+            if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
+                return 'red';
+            }else{
+                return 'white';
+            }
+        })
         .style('font-family', 'Arial');
         
         

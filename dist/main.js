@@ -124,7 +124,7 @@ var path = d3.geoPath().projection(projection);
 var promises = [d3.json("wards.json"), d3.csv('data.csv')];
 var g = svg.append('g');
 var colorset = ["red", "blue", "yellow", "plum", "green", "pink", 'white', ''];
-var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", 'HOMICIDE', "SHOW ALL"];
+var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", "HOMICIDE", "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES"];
 Promise.all(promises).then(ready);
 
 function ready(_ref) {
@@ -217,7 +217,19 @@ function ready(_ref) {
     return d;
   }).attr("x", 550).attr("y", function (d, i) {
     return 145 + i * 30;
-  }).style('stroke', 'white').style('fill', 'white').style('font-family', 'Arial');
+  }).style('stroke', function (d) {
+    if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
+      return "red";
+    } else {
+      return "white";
+    }
+  }).style('fill', function (d) {
+    if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
+      return 'red';
+    } else {
+      return 'white';
+    }
+  }).style('font-family', 'Arial');
   var colorRange = ["#9cdbe5", "#e0e0e0", "#59ddf2"];
   var color = d3.scaleLinear().range(colorRange).domain([-1, 0, 1]);
   var radialGradient = svg.append("defs").append("radialGradient").attr("id", "radial-gradient");

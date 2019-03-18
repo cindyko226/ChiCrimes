@@ -10,16 +10,27 @@
 
 
 h1{
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 svg{
     background: rgb(186, 223, 228);
 }
 
+.square{
+    color: red;
+}
 
-
+.header{
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    background: pink;
+    margin: 0 auto;
+    height: 100px;
+    font-size: 40px;
+    justify-content: center;
+}
 
 
 #tooltip {
