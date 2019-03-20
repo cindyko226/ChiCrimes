@@ -9,11 +9,11 @@
 
 
 
-h1{
-}
+
 
 svg{
     background: rgb(186, 223, 228);
+    margin: 0 auto;
 }
 
 .square{
@@ -28,6 +28,8 @@ svg{
     background: pink;
     margin: 0 auto;
     height: 100px;
+    width: 90%;
+    margin-top: 10px;
     font-size: 40px;
     justify-content: center;
 }
