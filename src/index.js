@@ -126,8 +126,7 @@ function ready([chicago, data]) {
               .attr("r", 20);
             d3.select("#date").text(d.Date);
             d3.select("#location").text(d.Block);
-            d3.select("#primarytype").text(
-                d.PrimaryType === "DECEPTIVE PRACTICE" ? "HOMICIDE" : d.PrimaryType
+            d3.select("#primarytype").text("HOMICIDE"
             );
             d3.select("#arrest")
                 .text(d.Arrest)
