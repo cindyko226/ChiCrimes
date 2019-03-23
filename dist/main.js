@@ -175,7 +175,7 @@ function ready(_ref) {
     d3.select(this).style("opacity", 1).attr("r", 20);
     d3.select("#date").text(d.Date);
     d3.select("#location").text(d.Block);
-    d3.select("#primarytype").text("HOMICIDE");
+    d3.select("#primarytype").text(d.PrimaryType === "DECEPTIVE PRACTICE" ? "HOMICIDE" : d.PrimaryType);
     d3.select("#arrest").text(d.Arrest).style('color', d.Arrest === "true" ? "green" : "red");
     d3.select('#tooltip').style('left', d3.event.pageX + 20 + 'px').style('top', d3.event.pageY - 80 + 'px').style('display', 'block');
   }).on('mouseout', function (d) {
