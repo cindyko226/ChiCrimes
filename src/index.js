@@ -126,7 +126,13 @@ function ready([chicago, data]) {
               .attr("r", 20);
             d3.select("#date").text(d.Date);
             d3.select("#location").text(d.Block);
-            d3.select("#primarytype").text(d.PrimaryType);
+            d3.select("#primarytype").text(function(d) {
+                if(d.PrimaryType === "DECEPTIVE PRACTICE"){
+                    return "HOMICIDE";
+                }else{
+                    return d.PrimaryType;
+                }
+            });
             d3.select("#arrest")
                 .text(d.Arrest)
                 .style('color', (d.Arrest === "true") ? "green" : "red");
