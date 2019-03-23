@@ -124,7 +124,7 @@ var path = d3.geoPath().projection(projection);
 var promises = [d3.json("wards.json"), d3.csv('data.csv')];
 var g = svg.append('g');
 var colorset = ["red", "blue", "yellow", "plum", "green", "pink", 'white', ''];
-var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", "HOMICIDE", "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES"];
+var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", "HOMICIDE" / "OTHERS", "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES"];
 Promise.all(promises).then(ready);
 
 function ready(_ref) {
