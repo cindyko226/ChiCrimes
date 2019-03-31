@@ -186,13 +186,13 @@ function ready([chicago, data]) {
 
 
     let textset = {
-        type: [`THEFT / MOTOR VEHICLE THEFT --${numberRed} ` ,
-            `BATTERY / ASSAULT --${numberPlum}`,
-            `WEAPONS VIOLATION / CRIM SEXUAL ASSAULT --${numberYellow}`,
-            `BURGLARY / ROBBERY --${numberBlue}`,
-            `NARCOTICS --${numberPink}`,
-            `OTHER OFFENSE / OFFENSE INVOLVING CHILDREN --${numberGreen}`,
-            `HOMICIDE / OTHERS --${numberWhite}`,
+        type: [`THEFT / MOTOR VEHICLE THEFT - ${numberRed} ` ,
+            `BATTERY / ASSAULT - ${numberPlum}`,
+            `WEAPONS VIOLATION / CRIM SEXUAL ASSAULT - ${numberYellow}`,
+            `BURGLARY / ROBBERY - ${numberBlue}`,
+            `NARCOTICS - ${numberPink}`,
+            `OTHER OFFENSE / OFFENSE INVOLVING CHILDREN - ${numberGreen}`,
+            `HOMICIDE / OTHERS - ${numberWhite}`,
             "SHOW ALL",
             "CLICK COLOR SQUARE TO FILTER CRIMES",
             "=> HOVER ON CIRCLE TO SEE DETAILS"]

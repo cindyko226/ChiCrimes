@@ -211,7 +211,7 @@ function ready(_ref) {
   var numberGreen = d3.selectAll('.green').size();
   var numberWhite = d3.selectAll('.white').size();
   var textset = {
-    type: ["THEFT / MOTOR VEHICLE THEFT --".concat(numberRed, " "), "BATTERY / ASSAULT --".concat(numberPlum), "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT --".concat(numberYellow), "BURGLARY / ROBBERY --".concat(numberBlue), "NARCOTICS --".concat(numberPink), "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN --".concat(numberGreen), "HOMICIDE / OTHERS --".concat(numberWhite), "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES", "=> HOVER ON CIRCLE TO SEE DETAILS"]
+    type: ["THEFT / MOTOR VEHICLE THEFT - ".concat(numberRed, " "), "BATTERY / ASSAULT - ".concat(numberPlum), "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT - ".concat(numberYellow), "BURGLARY / ROBBERY - ".concat(numberBlue), "NARCOTICS - ".concat(numberPink), "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN - ".concat(numberGreen), "HOMICIDE / OTHERS - ".concat(numberWhite), "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES", "=> HOVER ON CIRCLE TO SEE DETAILS"]
   };
   g.selectAll("text").data(textset.type).enter().append("text").text(function (d) {
     return d;
