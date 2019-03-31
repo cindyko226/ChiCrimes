@@ -19,5 +19,7 @@ The color square can filter out specified crime and show on the map with chosen 
 
 
 ## Features 
+![Filter](https://github.com/cindyko226/ChicagoCrimes/blob/master/screenshots/crimes.gif)
 * See crimes rate with different color within specified ranges.
+* Show details when hovering on the circles.
 * Click color square to filter out specified crimes.
