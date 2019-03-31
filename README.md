@@ -1,6 +1,6 @@
 # 2018 Chicago Crimes
 
-Live Demo(https://cindyko226.github.io/ChiCrimes/)
+[Live Demo](https://cindyko226.github.io/ChiCrimes/)
 
 
 A Map with crimes shown in each county, each color represents different type of crimes.  
