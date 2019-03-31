@@ -20,16 +20,6 @@ var projection = d3.geoAlbers()
     .rotate([87.750, 0])
     .center([0, 41.825]);
 
-//41.965130329,-87.758377123
-
-// console.log(
-//   d3
-//     .geoAlbers()
-//     .translate([(w * map_portion) / 2, h / 2])
-//     .scale(82000)
-//     .rotate([87.85, 0])
-//     .center([0, 41.825])([-87.758377123, 41.965130329])
-// );
 
 
 
@@ -126,9 +116,7 @@ function ready([chicago, data]) {
               .attr("r", 20);
             d3.select("#date").text(d.Date);
             d3.select("#location").text(d.Block);
-            d3.select("#primarytype").text(
-                (d.PrimaryType === "DECEPTIVE PRACTICE") ? "HOMICIDE" : d.PrimaryType
-            );
+            d3.select("#primarytype").text( d.PrimaryType);
             d3.select("#arrest")
                 .text(d.Arrest)
                 .style('color', (d.Arrest === "true") ? "green" : "red");
@@ -224,45 +212,6 @@ function ready([chicago, data]) {
         });
         
         
-
-
-
-
-    // var colorRange = ["#9cdbe5", "#e0e0e0", "#59ddf2"];
-    // var color = d3.scaleLinear().range(colorRange).domain([-1, 0, 1]);
-
-    // var radialGradient = svg.append("defs")
-    //     .append("radialGradient")
-    //     .attr("id", "radial-gradient");
-
-    // radialGradient.append("stop")
-    //     .attr("offset", "0%")
-    //     .attr("stop-color", color(-1));
-
-    // radialGradient.append("stop")
-    //     .attr("offset", "50%")
-    //     .attr("stop-color", color(0));
-
-    // radialGradient.append("stop")
-    //     .attr("offset", "100%")
-    //     .attr("stop-color", color(1));
-
-    // svg.append("circle")
-    //     .attr("cx", width * 0.65)
-    //     .attr("cy", height * 0.55)
-    //     .attr("r", height * 0.03)
-    //     .style("opacity", 0.7)
-    //     .style("fill", "url(#radial-gradient)")
-    //     .attr('class', 'pulse')
-
-
-
-
-
-      
-       
     }
     
- 
-    // .attr("class", 'pulse')
                          
