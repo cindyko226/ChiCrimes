@@ -2,19 +2,19 @@
 
 
 
-var svg = d3.select("svg"),
+let svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
 svg.attr('viewBox', '250 100 600 600');
 
-var scale = 0.70,
+let scale = 0.70,
     w = 1400 * scale,
     h = 1200 * scale,
     data = [],
     map_portion = 0.65;
 
-var projection = d3.geoAlbers()
+let projection = d3.geoAlbers()
     .translate([(w * map_portion) / 2, h / 2])
     .scale(82000)
     .rotate([87.750, 0])
@@ -23,29 +23,22 @@ var projection = d3.geoAlbers()
 
 
 
-var path = d3.geoPath()
+let path = d3.geoPath()
     .projection(projection);
 
-var promises = [
+let promises = [
     d3.json("wards.json"),
     d3.csv('data.csv')
 ];
 
-var g = svg.append('g');
+let g = svg.append('g');
 
 
-var colorset = ["red", "plum", "yellow", "blue", "pink","green",'white', ''];
-var textset = [
-  "THEFT / MOTOR VEHICLE THEFT",
-  "BATTERY / ASSAULT",
-  "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT",
-  "BURGLARY / ROBBERY",
-  "NARCOTICS",
-  "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN",
-  "HOMICIDE" / "OTHERS",
-  "SHOW ALL",
-  "CLICK COLOR SQUARE TO FILTER CRIMES",
-];
+let colorset = ["red", "plum", "yellow", "blue", "pink","green",'white', ''];
+
+
+
+
 
 Promise.all(promises).then(ready);
 
@@ -53,7 +46,7 @@ Promise.all(promises).then(ready);
 
 function ready([chicago, data]) {
 
-    var precincts = topojson.feature(chicago, chicago.objects.wards);
+    let precincts = topojson.feature(chicago, chicago.objects.wards);
 
     
        g.attr("class", "precinct")
@@ -135,7 +128,7 @@ function ready([chicago, data]) {
                 .style('display', 'none');
         });
         
-    
+  
 
         g.selectAll("rect")
           .data(colorset)
@@ -179,39 +172,81 @@ function ready([chicago, data]) {
               }
           });
 
-        
+
+
+
+
+    let numberRed = d3.selectAll('.red').size();
+    let numberPlum = d3.selectAll('.plum').size();
+    let numberYellow = d3.selectAll('.yellow').size();
+    let numberBlue = d3.selectAll('.blue').size();
+    let numberPink= d3.selectAll('.pink').size();
+    let numberGreen = d3.selectAll('.green').size();
+    let numberWhite = d3.selectAll('.white').size();
+
+
+    let textset = {
+        type: [`THEFT / MOTOR VEHICLE THEFT --${numberRed} ` ,
+            `BATTERY / ASSAULT --${numberPlum}`,
+            `WEAPONS VIOLATION / CRIM SEXUAL ASSAULT --${numberYellow}`,
+            `BURGLARY / ROBBERY --${numberBlue}`,
+            `NARCOTICS --${numberPink}`,
+            `OTHER OFFENSE / OFFENSE INVOLVING CHILDREN --${numberGreen}`,
+            `HOMICIDE / OTHERS --${numberWhite}`,
+            "SHOW ALL",
+            "CLICK COLOR SQUARE TO FILTER CRIMES",
+            "=> HOVER ON CIRCLE TO SEE DETAILS"]
+       
+    };
+    
+    
        
         g.selectAll("text")
-        .data(textset)
+        .data(textset.type)
         .enter()
         .append("text")
         .text((d) => d)
         .attr("x", 550)
         .attr("y", function(d, i){
-            return 145 + (i * 30)
+            if (d === "=> HOVER ON CIRCLE TO SEE DETAILS"){
+                return 500;
+            }else{
+                return 145 + (i * 30);
+            }
         })
         .style('stroke', function (d) {
-            if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
-                return "DarkSlateGray";
+            if (
+              d === "CLICK COLOR SQUARE TO FILTER CRIMES" 
+            ) {
+              return "DarkSlateGray";
+            } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS"){
+                return 'Brown';
             } else {
               return "white";
             }
             })
         .style('fill', function(d) {
-            if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
-                return "DarkSlateGray";
-            }else{
-                return 'white';
+            if (
+              d === "CLICK COLOR SQUARE TO FILTER CRIMES"
+            ) {
+              return "DarkSlateGray";
+            } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS"){
+                return 'Brown';
+            } else {
+              return "white";
             }
         })
         .style('font-family', 'Arial')
         .attr('class', function(d){
-            if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
-                return 'pulse';
+            if (
+              d === "CLICK COLOR SQUARE TO FILTER CRIMES" 
+            ) {
+              return "pulse";
             }
         });
         
-        
+       
+
     }
     
                          

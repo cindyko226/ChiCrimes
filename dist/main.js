@@ -110,21 +110,11 @@ var scale = 0.70,
     h = 1200 * scale,
     data = [],
     map_portion = 0.65;
-var projection = d3.geoAlbers().translate([w * map_portion / 2, h / 2]).scale(82000).rotate([87.750, 0]).center([0, 41.825]); //41.965130329,-87.758377123
-// console.log(
-//   d3
-//     .geoAlbers()
-//     .translate([(w * map_portion) / 2, h / 2])
-//     .scale(82000)
-//     .rotate([87.85, 0])
-//     .center([0, 41.825])([-87.758377123, 41.965130329])
-// );
-
+var projection = d3.geoAlbers().translate([w * map_portion / 2, h / 2]).scale(82000).rotate([87.750, 0]).center([0, 41.825]);
 var path = d3.geoPath().projection(projection);
 var promises = [d3.json("wards.json"), d3.csv('data.csv')];
 var g = svg.append('g');
-var colorset = ["red", "blue", "yellow", "plum", "green", "pink", 'white', ''];
-var textset = ["THEFT / MOTOR VEHICLE THEFT", "BATTERY / ASSAULT", "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT", "BURGLARY / ROBBERY", "NARCOTICS", "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN", "HOMICIDE" / "OTHERS", "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES"];
+var colorset = ["red", "plum", "yellow", "blue", "pink", "green", 'white', ''];
 Promise.all(promises).then(ready);
 
 function ready(_ref) {
@@ -175,7 +165,7 @@ function ready(_ref) {
     d3.select(this).style("opacity", 1).attr("r", 20);
     d3.select("#date").text(d.Date);
     d3.select("#location").text(d.Block);
-    d3.select("#primarytype").text(d.PrimaryType === "DECEPTIVE PRACTICE" ? "HOMICIDE" : d.PrimaryType);
+    d3.select("#primarytype").text(d.PrimaryType);
     d3.select("#arrest").text(d.Arrest).style('color', d.Arrest === "true" ? "green" : "red");
     d3.select('#tooltip').style('left', d3.event.pageX + 20 + 'px').style('top', d3.event.pageY - 80 + 'px').style('display', 'block');
   }).on('mouseout', function (d) {
@@ -191,21 +181,21 @@ function ready(_ref) {
     if (d === 'red') {
       d3.selectAll('circle').style('display', 'none');
       d3.selectAll('.red').style('display', 'block');
-    } else if (d === 'blue') {
-      d3.selectAll('circle').style('display', 'none');
-      d3.selectAll('.blue').style('display', 'block');
-    } else if (d === 'yellow') {
-      d3.selectAll('circle').style('display', 'none');
-      d3.selectAll('.yellow').style('display', 'block');
     } else if (d === 'plum') {
       d3.selectAll('circle').style('display', 'none');
       d3.selectAll('.plum').style('display', 'block');
-    } else if (d === 'green') {
+    } else if (d === 'yellow') {
       d3.selectAll('circle').style('display', 'none');
-      d3.selectAll('.green').style('display', 'block');
+      d3.selectAll('.yellow').style('display', 'block');
+    } else if (d === 'blue') {
+      d3.selectAll('circle').style('display', 'none');
+      d3.selectAll('.blue').style('display', 'block');
     } else if (d === 'pink') {
       d3.selectAll('circle').style('display', 'none');
       d3.selectAll('.pink').style('display', 'block');
+    } else if (d === 'green') {
+      d3.selectAll('circle').style('display', 'none');
+      d3.selectAll('.green').style('display', 'block');
     } else if (d === 'white') {
       d3.selectAll('circle').style('display', 'none');
       d3.selectAll('.white').style('display', 'block');
@@ -213,48 +203,46 @@ function ready(_ref) {
       d3.selectAll('circle').style('display', 'block');
     }
   });
-  g.selectAll("text").data(textset).enter().append("text").text(function (d) {
+  var numberRed = d3.selectAll('.red').size();
+  var numberPlum = d3.selectAll('.plum').size();
+  var numberYellow = d3.selectAll('.yellow').size();
+  var numberBlue = d3.selectAll('.blue').size();
+  var numberPink = d3.selectAll('.pink').size();
+  var numberGreen = d3.selectAll('.green').size();
+  var numberWhite = d3.selectAll('.white').size();
+  var textset = {
+    type: ["THEFT / MOTOR VEHICLE THEFT --".concat(numberRed, " "), "BATTERY / ASSAULT --".concat(numberPlum), "WEAPONS VIOLATION / CRIM SEXUAL ASSAULT --".concat(numberYellow), "BURGLARY / ROBBERY --".concat(numberBlue), "NARCOTICS --".concat(numberPink), "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN --".concat(numberGreen), "HOMICIDE / OTHERS --".concat(numberWhite), "SHOW ALL", "CLICK COLOR SQUARE TO FILTER CRIMES", "=> HOVER ON CIRCLE TO SEE DETAILS"]
+  };
+  g.selectAll("text").data(textset.type).enter().append("text").text(function (d) {
     return d;
   }).attr("x", 550).attr("y", function (d, i) {
-    return 145 + i * 30;
+    if (d === "=> HOVER ON CIRCLE TO SEE DETAILS") {
+      return 500;
+    } else {
+      return 145 + i * 30;
+    }
   }).style('stroke', function (d) {
     if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
       return "DarkSlateGray";
+    } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS") {
+      return 'Brown';
     } else {
       return "white";
     }
   }).style('fill', function (d) {
-    if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
+    if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
       return "DarkSlateGray";
+    } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS") {
+      return 'Brown';
     } else {
-      return 'white';
+      return "white";
     }
   }).style('font-family', 'Arial').attr('class', function (d) {
-    if (d === 'CLICK COLOR SQUARE TO FILTER CRIMES') {
-      return 'pulse';
+    if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
+      return "pulse";
     }
-  }); // var colorRange = ["#9cdbe5", "#e0e0e0", "#59ddf2"];
-  // var color = d3.scaleLinear().range(colorRange).domain([-1, 0, 1]);
-  // var radialGradient = svg.append("defs")
-  //     .append("radialGradient")
-  //     .attr("id", "radial-gradient");
-  // radialGradient.append("stop")
-  //     .attr("offset", "0%")
-  //     .attr("stop-color", color(-1));
-  // radialGradient.append("stop")
-  //     .attr("offset", "50%")
-  //     .attr("stop-color", color(0));
-  // radialGradient.append("stop")
-  //     .attr("offset", "100%")
-  //     .attr("stop-color", color(1));
-  // svg.append("circle")
-  //     .attr("cx", width * 0.65)
-  //     .attr("cy", height * 0.55)
-  //     .attr("r", height * 0.03)
-  //     .style("opacity", 0.7)
-  //     .style("fill", "url(#radial-gradient)")
-  //     .attr('class', 'pulse')
-} // .attr("class", 'pulse')
+  });
+}
 
 /***/ })
 
