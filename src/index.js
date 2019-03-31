@@ -44,7 +44,7 @@ var textset = [
   "OTHER OFFENSE / OFFENSE INVOLVING CHILDREN",
   "HOMICIDE" / "OTHERS",
   "SHOW ALL",
-  "CLICK COLOR SQUARE TO FILTER CRIMES"
+  "CLICK COLOR SQUARE TO FILTER CRIMES",
 ];
 
 Promise.all(promises).then(ready);
@@ -156,21 +156,21 @@ function ready([chicago, data]) {
               if(d === 'red'){
                   d3.selectAll('circle').style('display','none');
                   d3.selectAll('.red').style('display', 'block');
-              }else if( d === 'blue'){
+              }else if( d === 'plum'){
                   d3.selectAll('circle').style('display', 'none');
-                  d3.selectAll('.blue').style('display', 'block');
+                  d3.selectAll('.plum').style('display', 'block');
               } else if (d === 'yellow'){
                   d3.selectAll('circle').style('display', 'none');
                   d3.selectAll('.yellow').style('display', 'block');
-              }else if (d === 'plum'){
+              }else if (d === 'blue'){
                   d3.selectAll('circle').style('display', 'none');
-                  d3.selectAll('.plum').style('display', 'block');
-              }else if (d === 'green'){
-                  d3.selectAll('circle').style('display', 'none');
-                  d3.selectAll('.green').style('display', 'block');
-              }else if ( d === 'pink'){
+                  d3.selectAll('.blue').style('display', 'block');
+              }else if (d === 'pink'){
                   d3.selectAll('circle').style('display', 'none');
                   d3.selectAll('.pink').style('display', 'block');
+              }else if ( d === 'green'){
+                  d3.selectAll('circle').style('display', 'none');
+                  d3.selectAll('.green').style('display', 'block');
               }else if (d === 'white'){
                   d3.selectAll('circle').style('display', 'none');
                   d3.selectAll('.white').style('display', 'block');
