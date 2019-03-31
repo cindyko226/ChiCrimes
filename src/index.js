@@ -34,7 +34,7 @@ var promises = [
 var g = svg.append('g');
 
 
-var colorset = ["red", "blue", "yellow", "plum", "green","pink",'white', ''];
+var colorset = ["red", "plum", "yellow", "blue", "pink","green",'white', ''];
 var textset = [
   "THEFT / MOTOR VEHICLE THEFT",
   "BATTERY / ASSAULT",
