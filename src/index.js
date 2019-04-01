@@ -40,7 +40,7 @@ let colorset = ["red", "plum", "yellow", "blue", "pink","green",'white', ''];
 
 
 
-Promise.all(promises).then(ready);
+Promise.all(promises).then(ready);      
 
 
 
