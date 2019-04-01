@@ -3,8 +3,8 @@
 [Live Demo](https://cindyko226.github.io/ChiCrimes/)
 
 
-A Map with crimes shown in each county, each color represents different type of crimes.  
-The color square can filter out specified crime and show on the map with chosen crime type.
+A Chicago Map with crimes shown in circle dots, each color represents different type of crimes.  
+The color square can filter out specific crimes and the total numbers of chosen crime type. 
 
 
 ## Technologies
