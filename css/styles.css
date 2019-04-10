@@ -7,9 +7,13 @@
     stroke: aqua;
 }
 
+body{
+}
+
 
 svg{
-    background: rgb(186, 223, 228);
+    background-image: url("data.gif");
+    /* background: rgb(186, 223, 228); */
     margin: 0 auto;
 }
 
@@ -53,7 +57,7 @@ svg{
 }
 
 .t{
-    color: green;
+    color: rgb(167, 162, 155);
 }
 
 

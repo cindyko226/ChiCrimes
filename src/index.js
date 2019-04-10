@@ -218,7 +218,7 @@ function ready([chicago, data]) {
             if (
               d === "CLICK COLOR SQUARE TO FILTER CRIMES" 
             ) {
-              return "DarkSlateGray";
+              return "Aqua";
             } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS"){
                 return 'Brown';
             } else {
@@ -229,7 +229,7 @@ function ready([chicago, data]) {
             if (
               d === "CLICK COLOR SQUARE TO FILTER CRIMES"
             ) {
-              return "DarkSlateGray";
+              return "Aqua";
             } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS"){
                 return 'Brown';
             } else {
