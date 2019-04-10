@@ -223,7 +223,7 @@ function ready(_ref) {
     }
   }).style('stroke', function (d) {
     if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
-      return "DarkSlateGray";
+      return "Aqua";
     } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS") {
       return 'Brown';
     } else {
@@ -231,7 +231,7 @@ function ready(_ref) {
     }
   }).style('fill', function (d) {
     if (d === "CLICK COLOR SQUARE TO FILTER CRIMES") {
-      return "DarkSlateGray";
+      return "Aqua";
     } else if (d === "=> HOVER ON CIRCLE TO SEE DETAILS") {
       return 'Brown';
     } else {

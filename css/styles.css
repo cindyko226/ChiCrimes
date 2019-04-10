@@ -75,6 +75,7 @@ svg{
 {
     /* Giving Animation Function */
     -webkit-animation: pulse 3s infinite ;
+    color: aqua;
 }
 
 .blur {
