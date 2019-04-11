@@ -1,6 +1,6 @@
 # 2018 Chicago Crimes
 
-[Live Demo](https://cindyko226.github.io/ChiCrimes/)
+[Live Demo](https://cindyko226.github.io/ChicagoCrimes/)
 
 
 A Chicago Map with crimes shown in circle dots, each color represents different type of crimes.  
