@@ -19,7 +19,8 @@ The color square can filter out specific crimes and the total numbers of chosen 
 
 ## Features 
 
-![Filter](https://github.com/cindyko226/ChicagoCrimes/blob/master/screenshots/crimes.gif)
+![Filter](https://github.com/cindyko226/ChicagoCrimes/blob/master/screenshots/chicago-updated.gif
+)
 
 Crimes Infomation 
 ```js
